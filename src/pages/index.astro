@@ -1,8 +1,18 @@
 ---
 // component imports
+import Card from "@/components/Card.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const allreceipes = await Astro.glob("./recetas/*.md");
 ---
 
 <MainLayout title="My Blog">
-  <p>hi from <span>Home</span></p>
+  <div class="flex gap-2">
+    {
+      allreceipes.map((receipe) => (
+        <Card frontmatter ={receipe.frontmatter} url ={receipe.url}/>
+    ))
+    }
+  </div>
+  
 </MainLayout>
