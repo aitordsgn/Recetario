@@ -1,23 +1,51 @@
 ---
+import MainHead from './MainHead.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
 
-interface Props {
-    title?: string;
-    description?: string;
-}
-
-const {title ="Default Title", description="Default Description"} = Astro.props;
+const { title = "Default Title", description = "Default Description" } = Astro.props;
+import '@fontsource-variable/inter'
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-        <meta name="description" content={description}/>
-	</head>
-	<body>
-		<slot/>
-	</body>
+  <MainHead {title} {description} />
+  <body>
+    <Nav />
+    <!-- Aquí renderizamos el contenido desde index.astro -->
+    <main>
+      <slot> Default Text </slot>
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style is="global">
+  /* CSS Reset */
+  * {
+    min-width: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  img, video, svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  body {
+    font-family: 'Inter-variable', sans-serif;
+    margin: 0;
+    min-height: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+</style>
