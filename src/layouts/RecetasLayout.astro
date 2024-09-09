@@ -41,11 +41,11 @@ import { Icon } from 'astro-icon/components';
         <!-- Estilo de dificultad basado en el nivel -->
         <span class={
           dificultad === "Fácil" ? 
-          "bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded" 
+          "bg-green-100 text-green-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded" 
           : dificultad === "Medio" ? 
-          "bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded " 
+          "bg-yellow-100 text-yellow-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded " 
           : 
-          "bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded"
+          "bg-red-100 text-red-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded"
         }>
           {dificultad}
         </span>
@@ -54,7 +54,7 @@ import { Icon } from 'astro-icon/components';
 
     <!-- Contenido de la receta -->
     <div class="markdown-content post-content max-w-5xl mx-auto w-[90%]">
-      <div class="content flex gap-b-1 flex-col">
+      <div class="content flex gap-b-1 flex-col text-balance mx-auto">
         <slot />
       </div>
     </div>

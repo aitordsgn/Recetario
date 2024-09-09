@@ -4,15 +4,6 @@ import { string } from "astro:schema";
 const {frontmatter,url}=Astro.props;
 const { titulo, descripcion, tiempo, dificultad, raciones, imagen} = frontmatter;
 
-
-// Función para determinar la clase CSS en función de la dificultad
-const dificultadClass = (dificultad: string) => {
-  if (dificultad === "facil") return "text-green-500";
-  if (dificultad === "medio") return "text-orange-500";
-  if (dificultad === "dificil") return "text-red-500";
-  return "text-gray-500"; // Clase por defecto si la dificultad no coincide
-};
-
 ---
 
 <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
@@ -28,10 +19,17 @@ const dificultadClass = (dificultad: string) => {
 
     <p class="mb-3 font-normal text-gray-700 ">{descripcion}</p>
 
-    <!-- Dificultad con clase CSS condicional -->
-    <p class={`font-semibold ${dificultadClass(dificultad)}`}>
-      Dificultad: {dificultad}
-    </p>
+    <!-- Etiqueta de Dificultad -->
+    <span class={
+      dificultad === "Fácil" ? 
+      "bg-green-100 text-green-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded" 
+      : dificultad === "Medio" ? 
+      "bg-yellow-100 text-yellow-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded" 
+      : 
+      "bg-red-100 text-red-800 text-sm font-bold me-2 px-2.5 py-0.5 rounded"
+    }>
+      {dificultad}
+    </span>
 
     <a href={url} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
       Read more
