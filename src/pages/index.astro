@@ -7,7 +7,7 @@ const allreceipes = await Astro.glob("./recetas/*.md");
 ---
 
 <MainLayout title="My Blog">
-  <div class="flex gap-2">
+  <div class="flex gap-2 flex-wrap">
     {
       allreceipes.map((receipe) => (
         <Card frontmatter ={receipe.frontmatter} url ={receipe.url}/>
